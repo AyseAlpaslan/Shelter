@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Shelter.Model.Models.Animal>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAnimal.cshtml";
+}
+
+<h1 class="mb-0 bread">ANIMALS</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimalType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimalGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimalAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnimalType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnimalGender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnimalAge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParentID)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AnimalID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AnimalID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AnimalID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
